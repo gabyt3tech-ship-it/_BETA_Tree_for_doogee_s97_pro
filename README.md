@@ -64,3 +64,4 @@ mka recoveryimage
 - **Gabriel** – manutenção e adaptação para o S97 Pro  
 
 ---
+# _BETA_Tree_for_doogee_s97_pro
