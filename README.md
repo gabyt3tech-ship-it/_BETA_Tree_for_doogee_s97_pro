@@ -61,7 +61,7 @@ mka recoveryimage
 - **LineageOS Team** – base do AOSP/Lineage  
 - **Doogee** – device  
 - **Comunidade Android** – patches e suporte  
-- **Gabriel** – manutenção e adaptação para o S97 Pro  
+- **Gabyt3** – manutenção e adaptação para o S97 Pro  
 
 ---
 # _BETA_Tree_for_doogee_s97_pro
