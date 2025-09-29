@@ -1,0 +1,3 @@
+# Kill serial console warning
+on boot
+    setprop init.svc.console stopped

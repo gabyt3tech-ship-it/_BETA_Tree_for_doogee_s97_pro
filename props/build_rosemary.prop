@@ -1,0 +1,19 @@
+# Device
+ro.product.system.brand=DOOGEE
+ro.product.system.manufacturer=DOOGEE
+ro.product.system.model=S97Pro
+ro.product.system.device=s97pro
+ro.product.system.name=s97pro
+
+ro.product.model=Doogee S97 Pro
+ro.product.board=s97pro
+ro.product.device=s97pro
+ro.product.name=s97pro
+
+# Build info
+ro.build.flavor=s97pro-user
+ro.build.product=s97pro
+ro.build.description=full_k85v1_64-user 11 RP1A.200720.011 1638529751 release-keys
+ro.build.fingerprint=DOOGEE/S97Pro/S97Pro:11/RP1A.200720.011/1638529751:user/release-keys
+ro.system.build.fingerprint=DOOGEE/S97Pro/S97Pro:11/RP1A.200720.011/1638529751:user/release-keys
+

@@ -1,0 +1,104 @@
+#
+# Doogee S97 Pro - BoardConfig
+#
+
+DEVICE_PATH := device/doogee/s97pro
+
+# Arquitetura
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-2a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_VARIANT_RUNTIME := cortex-a76
+
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv8-2a
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a76
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := s97pro
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := mt6785
+TARGET_NO_BOOTLOADER := true
+TARGET_BOARD_PLATFORM := mt6785
+
+# Kernel
+BOARD_KERNEL_BASE := 0x40078000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_BOOTIMG_HEADER_VERSION := 2
+BOARD_KERNEL_IMAGE_NAME := Image.gz
+TARGET_KERNEL_ARCH := arm64
+#TARGET_KERNEL_SOURCE := kernel/doogee/s97pro
+#TARGET_KERNEL_CONFIG := s97pro_defconfig
+
+# AVB
+BOARD_AVB_ENABLE := true
+
+# 🔑 Partições principais (valores convertidos do scatter)
+BOARD_BOOTIMAGE_PARTITION_SIZE        := 0x02000000    # 32 MB boot_a
+BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 0x04000000    # 64 MB vendor_boot_a
+BOARD_DTBOIMG_PARTITION_SIZE          := 0x00800000    # 8 MB dtbo_a
+BOARD_VBMETA_PARTITION_SIZE           := 0x00800000    # 8 MB vbmeta_a
+BOARD_VBMETA_SYSTEM_PARTITION_SIZE    := 0x00800000    # 8 MB vbmeta_system_a
+BOARD_VBMETA_VENDOR_PARTITION_SIZE    := 0x00800000    # 8 MB vbmeta_vendor_a
+BOARD_SUPER_PARTITION_SIZE            := 0x180000000   # 6,4 GB super
+BOARD_USERDATAIMAGE_PARTITION_SIZE    := 0x0C0000000   # 3 GB userdata
+BOARD_METADATAIMAGE_PARTITION_SIZE    := 0x02000000    # 32 MB metadata
+
+# Dynamic Partitions
+BOARD_BUILD_SUPER_IMAGE_BY_DEFAULT := true
+BOARD_SUPER_PARTITION_GROUPS := mtk_dynamic_partitions
+BOARD_MTK_DYNAMIC_PARTITIONS_SIZE := 0x17FC00000   # ~6,39 GB (super - overhead)
+BOARD_MTK_DYNAMIC_PARTITIONS_PARTITION_LIST := system product vendor
+
+# Filesystem
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
+
+TARGET_COPY_OUT_VENDOR  := vendor
+TARGET_COPY_OUT_PRODUCT := product
+
+# Recovery
+BOARD_USES_RECOVERY_AS_BOOT := true
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/first_stage_ramdisk/fstab.mt6785
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_SCREEN_DENSITY := 440
+
+# Sepolicy
+include device/mediatek/sepolicy/sepolicy.mk
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+
+# VNDK
+BOARD_VNDK_VERSION := current
+
+# ==== OrangeFox/TWRP extras ====
+
+# Suporte a criptografia (FDE/FBE)
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_FBE := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
+
+# Suporte a metadados de partição
+BOARD_USES_METADATA_PARTITION := true
+
+# Interface gráfica
+TW_THEME := portrait_hdpi
+TW_SCREEN_BLANK_ON_BOOT := true
+TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_USE_TOOLBOX := true
+
+# Suporte a logcat no recovery
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
+
+# Suporte a init.d
+TW_INCLUDE_INITD := true
+
+# Suporte a ADB no recovery
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+
+

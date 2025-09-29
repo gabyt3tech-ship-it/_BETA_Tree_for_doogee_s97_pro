@@ -1,0 +1,5 @@
+service vibrator-s97pro /vendor/bin/hw/android.hardware.vibrator-service.s97pro
+    class hal
+    user system
+    group system
+
